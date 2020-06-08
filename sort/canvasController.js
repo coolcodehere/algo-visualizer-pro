@@ -1,20 +1,26 @@
 import Two from '../node_modules/two.js/build/two.min.js'
 
 let elements = [];
+let two = undefined
 
 export function initTwo() {
-  let two = new Two({
-    fullscreen: false,
+  var t = new Two({
+    width: 800,
+    height: 300,
     autostart: true
   }).appendTo(document.getElementById('canvas'));   
   
-  return two
+  two = t
 }
 
-export function drawElements(two, numArray) {
-  let elementWidth = 50;
-  let xPlacement = two.width / 2 - (elementWidth * numArray.length)
+export function clearCanvas() {
+  two.clear()
+  elements = []
+}
 
+export function drawElements(numArray) {
+  let elementWidth = 50;
+  let xPlacement = two.width / 2 - (elementWidth * numArray.length) + 200
 
   for (let i = 0; i < numArray.length; i++) {
     let yPlacement = two.height / 2 - numArray[i] / 2
@@ -23,13 +29,16 @@ export function drawElements(two, numArray) {
     xPlacement += elementWidth + 10
     elements.push(element)
   }
+
+  two.update()
 }
 
-export function swapUIElements(two, elementIndex1, elementIndex2) {
-  console.log(elements)
-  let temp = elements[elementIndex1].position.x
-  elements[elementIndex2].position.x = elements[elementIndex1].position.x
-  elements[elementIndex1].position.x = temp
+export function swapUIElements(elementIndex1, elementIndex2) {
+
+  let temp = elements[elementIndex1].position.x;
+  elements[elementIndex1].position.x = elements[elementIndex2].position.x;
+  elements[elementIndex2].position.x = temp;
+  console.log("called")
 }
 
 

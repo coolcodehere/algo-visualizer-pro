@@ -1,6 +1,6 @@
 /* algorithms.js
 
-Slap the algorithms in here. 
+Slap sorting algorithms in here. 
 
 Every sorting algorithm should return an array that contains the 
 order of pairs to swap. 
@@ -15,16 +15,21 @@ order of pairs to swap.
 // }
 
 export function insertionSort(nums) {
-  let sortPairs = []
+  let swaps = [];
   for (let i = 1; i < nums.length; i++) {
-    let j = i - 1
-    let tmp = nums[i]
+    let j = i - 1;
+    let tmp = nums[i];
+    let tmpi = i;
     while (j >= 0 && nums[j] > tmp) {
-      nums[j + 1] = nums[j]
-      sortPairs.push({first:j, second:j + 1})
-      j--
+      nums[j + 1] = nums[j];
+      swaps.push(nums)
+      console.log(swaps)
+      j--;
     }
-    nums[j+1] = tmp
+    nums[j+1] = tmp;
+    swaps.push(nums)
   }
-  return nums
+
+  console.log(swaps)
+  return swaps;
 }
