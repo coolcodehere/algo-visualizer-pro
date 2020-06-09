@@ -1,4 +1,4 @@
-import Two from '../node_modules/two.js/build/two.min.js'
+import Two from '../../node_modules/two.js/build/two.min.js'
 
 let elements = [];
 let two = undefined
